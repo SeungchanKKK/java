@@ -1,67 +1,84 @@
 import java.util.Scanner;
 
 public class test {
-    static class ChulYoung{
-        int money;
-        boolean chance;
-        public ChulYoung(int money, boolean chance){
-            this.money =money;
-            this.chance = chance;
-        }
-    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        ChulYoung chulYoung = new ChulYoung(10000,true);
-
-        System.out.println("용돈을 입력하세요");
-        int add = sc.nextInt();
-        chulYoung.money+=add;
-
-        System.out.println("소지금 : "+chulYoung.money);
-
-        System.out.println("철수와영희가 먹을 떡볶이,우동,과자의 금액을 입력해주세요");
-        System.out.println("떡볶이의 금액은?");
-        int dduck = sc.nextInt();
-        System.out.println("우동의 금액은?");
-        int udon = sc.nextInt();
-        System.out.println("과자의 금액은?");
-        int snack = sc.nextInt();
-        System.out.println("아이스크림의 금액은?");
-        int ice = sc.nextInt();
-        System.out.println("밥의 금액은?");
-        int rice = sc.nextInt();
-
-        perchase(sc, chulYoung, dduck, "떡볶이");
-        perchase(sc, chulYoung, udon,"우동");
-        perchase(sc, chulYoung, snack,"과자");
-        perchase(sc, chulYoung, ice,"아이스크림");
-        perchase(sc, chulYoung, rice,"밥");
-
-    }
-
-    private static ChulYoung perchase(Scanner sc, ChulYoung chulYoung, int dduck, String name) {
-        System.out.println(name+"의 개수는?");
-        int amount = sc.nextInt();
-        int charge = dduck *amount;
-        int money = chulYoung.money;
-        if (money <charge){
-            int need = charge- money;
-            System.out.println(need+"만큼의 금액이 부족합니다");
-            if(!chulYoung.chance){
-                System.out.println("이미 추가용돈이 지급되었습니다");
+        int sum = 0;
+        while (true) {
+            System.out.println("1.구구단 2.음식점 3.계산기 4.종료");
+            int choice1 = sc.nextInt();
+            if (choice1 == 1) {
+                int num = 1;
+                while (num < 10) {
+                    System.out.println("2x" + num + "=" + num * 2);
+                    num++;
+                }
+            }
+            if (choice1 == 2) {
+                System.out.println("볶음밥 가격입력");
+                int price1 = sc.nextInt();
+                System.out.println("자장면 가격입력");
+                int price2 = sc.nextInt();;
+                System.out.println("탕수 소 가격입력");
+                int price3 = sc.nextInt();;
+                System.out.println("탕수 중 가격입력");
+                int price4 = sc.nextInt();;
+                System.out.println("탕수 대 가격입력");
+                int price5 = sc.nextInt();;
+                while (true) {w
+                    System.out.println(" [1.볶음밥 2.자장면 3.탕수육[소`중`대 따로] 4.종료]");
+                    int choice2 = sc.nextInt();
+                    if (choice2 == 1) {
+                        sum += price1;
+                    } else if (choice2 == 2) {
+                        sum += price2;
+                    } else if (choice2 == 3) {
+                        System.out.println("1소,2중,3대 중에 선택해주세요 4.이전메뉴로");
+                        int choice3 = sc.nextInt();
+                        if (choice3 == 1) {
+                            sum += price3;
+                        } else if (choice3 == 2) {
+                            sum += price4;
+                        } else {
+                            sum += price5;
+                        }
+                    } else {
+                        System.out.println("합산금액은" + sum);
+                        System.out.println("메인메뉴로 돌아갑니다");
+                        break;
+                    }
+                }
+            }
+            if (choice1 == 3) {
+                System.out.println("1.더하기, 2빼기");
+                int choice4=sc.nextInt();
+                if (choice4==1){
+                    System.out.println("더하기시작 숫자두개를 입력해주세요");
+                    int a =sc.nextInt();
+                    int b = sc.nextInt();
+                    int c = a + b;
+                    System.out.println(a + "+" + b + "=" + c);
+                } else {
+                    while (true) {
+                        System.out.println("빼기시작 숫자두개를 입력해주세요");
+                        int a = sc.nextInt();
+                        int b = sc.nextInt();
+                        int c = a - b;
+                        if (c < 0) {
+                            System.out.println("두 번재 숫자가 더 클 수 없습니다!!");
+                        }else {
+                            System.out.println(a + "-" + b + "=" + c);
+                            break;
+                        }
+                    }
+                }
+            }
+            if (choice1 == 4) {
+                System.out.println("프로그램을 종료합니다");
+                System.out.println("합산금액은"+sum);
                 System.exit(0);
-            }else {
-                System.out.println("추가용돈을 입력하세요");
-                int addMoney = sc.nextInt();
-                money +=addMoney;
-                chulYoung.chance=false;
             }
         }
-        System.out.println(name+"의 금액은"+charge);
-        money-=charge;
-        chulYoung.money = money;
-        System.out.println("남은금액은"+ money);
-        return chulYoung;
     }
 }
 
