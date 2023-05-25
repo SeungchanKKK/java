@@ -4,6 +4,7 @@ public class test {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int sum = 0;
+        int cal =0;
         while (true) {
             System.out.println("1.구구단 2.음식점 3.계산기 4.종료");
             int choice1 = sc.nextInt();
@@ -18,13 +19,13 @@ public class test {
                 System.out.println("볶음밥 가격입력");
                 int price1 = sc.nextInt();
                 System.out.println("자장면 가격입력");
-                int price2 = sc.nextInt();;
+                int price2 = sc.nextInt();
                 System.out.println("탕수 소 가격입력");
-                int price3 = sc.nextInt();;
+                int price3 = sc.nextInt();
                 System.out.println("탕수 중 가격입력");
-                int price4 = sc.nextInt();;
+                int price4 = sc.nextInt();
                 System.out.println("탕수 대 가격입력");
-                int price5 = sc.nextInt();;
+                int price5 = sc.nextInt();
                 while (true) {
                     System.out.println(" [1.볶음밥 2.자장면 3.탕수육[소`중`대 따로] 4.종료]");
                     int choice2 = sc.nextInt();
@@ -53,34 +54,57 @@ public class test {
                 System.out.println("1.더하기, 2빼기");
                 int choice4=sc.nextInt();
                 if (choice4==1){
-                    System.out.println("더하기시작 숫자두개를 입력해주세요");
-                    int a =sc.nextInt();
-                    int b = sc.nextInt();
-                    int c = a + b;
-                    System.out.println(a + "+" + b + "=" + c);
-                } else {
-                    while (true) {
-                        System.out.println("빼기시작 숫자두개를 입력해주세요");
-                        int a = sc.nextInt();
+                    if(cal==0){ System.out.println("더하기시작 숫자두개를 입력해주세요");
+                        int a =sc.nextInt();
                         int b = sc.nextInt();
-                        int c = a - b;
-                        if (c < 0) {
-                            System.out.println("두 번재 숫자가 더 클 수 없습니다!!");
-                        }else {
-                            System.out.println(a + "-" + b + "=" + c);
-                            break;
+                        int c = a + b;
+                        System.out.println(a + "+" + b + "=" + c);
+                        cal=c;
+                    }else {
+                        System.out.println("더하기 시작 "+cal+"에 더할숫자를 입력하세요");
+                        int a = sc.nextInt();
+                        cal+=a;
+                        System.out.println(cal);
+                    }
+                } else {
+                    if (cal == 0) {
+                        while (true) {
+                            System.out.println("빼기시작 숫자두개를 입력해주세요");
+                            int a = sc.nextInt();
+                            int b = sc.nextInt();
+                            int c = a - b;
+                            if (c < 0) {
+                                System.out.println("두 번재 숫자가 더 클 수 없습니다!!");
+                            } else {
+                                System.out.println(a + "-" + b + "=" + c);
+                                break;
+                            }
+                        }
+                    }else {
+                        while (true){
+                            System.out.println(cal+"에 뺄 숫자를 입력해주세요");
+                            int a = sc.nextInt();
+                            int c = cal-a;
+                            if (c<0){
+                                System.out.println("두 번재 숫자가 더 클 수 없습니다!!");
+                            }else {
+                                System.out.println("계산결과" + c);
+                                cal=c;
+                                break;
+                            }
                         }
                     }
                 }
             }
             if (choice1 == 4) {
                 System.out.println("프로그램을 종료합니다");
-                System.out.println("합산금액은"+sum);
+                System.out.println("합산금액은" + sum);
                 System.exit(0);
             }
         }
     }
 }
+
 
 
 
